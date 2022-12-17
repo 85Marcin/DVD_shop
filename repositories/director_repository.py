@@ -8,3 +8,17 @@ def save(director):
     results = run_sql(sql, values)
     director.id = results [0]['id']
     return director
+
+def delete_all():
+    sql = "DELETE FROM directors"
+    run_sql(sql)
+
+def select_all():
+    directors = []
+    sql = "SELECT * FROM directors"
+    results = run_sql(sql)
+
+    for row in results:
+        director = Director(row['name'])
+        directors.append(director)
+    return director
