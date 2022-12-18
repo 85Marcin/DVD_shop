@@ -6,7 +6,7 @@ def save(director):
     sql = "INSERT INTO directors(name) VALUES ( %s) RETURNING id "
     values = [director.name]
     results = run_sql(sql, values)
-    director.id = results [0]['id']
+    director.id = results[0]['id']
     return director
 
 def delete_all():
