@@ -17,8 +17,8 @@ warner_home_enertainment = Distributor("Warner Home Entertainment")
 distributor_repository.save(warner_home_enertainment)
 
 
-# rio_bravo = Film("Rio Bravo",howard_hawks, "Warner Home Entertainment", 15, 3, 12)
-# film_repository.save(rio_bravo)
+rio_bravo = Film("Rio Bravo",howard_hawks, warner_home_enertainment, 15, 3, 12)
+film_repository.save(rio_bravo)
 
 
 
