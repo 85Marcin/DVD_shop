@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {%block contend%}
+<form action="/new" method="'POST">
+  <div>
+    <label for="title">Title:</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      placeholder="Title"
+      required
+      autofocus
+    />
+  </div>
+  <div>
+    <label for="director">Director</label>
+    <input
+      type="text"
+      id="director"
+      name="director"
+      placeholder="Director"
+      required
+      autofocus
+    />
+  </div>
+  <div>
+    <label for="distributor">Distributor</label>
+    <input
+      type="text"
+      id="distributor"
+      name="distributor"
+      placeholder="Distributor"
+      required
+      autofocus
+    />
+  </div>
+  <div>
+    <label for="quantity">Quantity</label>
+    <input type="number" id="quantity" name="quantity" required autofocus />
+  </div>
+  <div>
+    <label for="buying_price">Buying Price</label>
+    <input
+      type="number"
+      id="buying_price"
+      name="buying_price"
+      required
+      autofocus
+    />
+  </div>
+  <div>
+    <label for="selling_price">Selling Price</label>
+    <input
+      type="number"
+      id="selling_price"
+      name="selling_price"
+      required
+      autofocus
+    />
+  </div>
+</form>
+
+{%endblock%}
