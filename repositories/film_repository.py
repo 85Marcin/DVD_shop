@@ -8,3 +8,7 @@ def save(film):
     results = run_sql(sql, values)
     film.id = results[0]['id']
     return film
+
+def delete_all():
+    sql = "DELETE FROM films"
+    run_sql(sql)

@@ -6,3 +6,7 @@ def save(distributor):
     results = run_sql(sql, values)
     distributor.id = results[0]['id']
     return distributor
+
+def delete_all():
+    sql = "DELETE FROM distributors"
+    run_sql(sql)
