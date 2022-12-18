@@ -22,3 +22,18 @@ def select_all():
         director = Director(row['name'])
         directors.append(director)
     return director
+
+def select(id):
+    director = None
+    sql = "SELECT * FROM directors WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    
+    if results:
+        result = results[0]
+        director = Director(result['name'], result['id'] )
+    return director
+
+
+
+
