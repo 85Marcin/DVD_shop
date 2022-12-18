@@ -6,4 +6,5 @@ class Film:
         self.stock_quantity = stock_quantity
         self.buying_price = buying_price
         self.selling_price = selling_price
+        self.profit = selling_price - buying_price
         self.id = id

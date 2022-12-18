@@ -27,7 +27,13 @@ film_repository.save(rio_bravo)
 blue_velvet = Film("Blue Velvet", david_lnych, high_fliers_films, 3, 4, 12)
 film_repository.save(blue_velvet)
 
-film_repository.select_all()
+
+big_sleep = Film("Big Sleep", howard_hawks, warner_home_enertainment, 9, 3,14)
+film_repository.save(big_sleep)
+
+
+
+
 
 
 

@@ -9,6 +9,7 @@
     <th>Stock Quantity</th>
     <th>Buying Price</th>
     <th>Selling Price</th>
+    <th>Profit</th>
   </tr>
   {%for film in films%}
   <tr>
@@ -17,13 +18,14 @@
     <td>{{film.director.name}}</td>
     <td>{{film.distributor.name}}</td>
     <td>
-      {%if film.stock_quantity == 0 %} {{film.stock_quantity}}&#10060; {%elif
+      {%if film.stock_quantity == 0 %} {{film.stock_quantity}} &#10060; {%elif
       film.stock_quantity > 0 and film.stock_quantity < 5 %}
-      {{film.stock_quantity}}&#9888;&#65039;{%else%} {{film.stock_quantity}}
+      {{film.stock_quantity}} &#9888;&#65039;{%else%} {{film.stock_quantity}}
       {%endif%}
     </td>
     <td>{{film.buying_price}}</td>
     <td>{{film.selling_price}}</td>
+    <td>{{film.profit}}</td>
   </tr>
   {%endfor%}
 </table>

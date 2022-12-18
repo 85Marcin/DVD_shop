@@ -20,5 +20,6 @@ CREATE TABLE films (
   distributor_id INT REFERENCES distributors(id) ON DELETE CASCADE,
   stock_quantity INT,
   buying_price INT,
-  selling_price INT
+  selling_price INT,
+  profit INT
 );
