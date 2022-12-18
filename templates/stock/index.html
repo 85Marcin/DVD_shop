@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {%block contend%}
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Director</th>
+    <th>Distributor</th>
+    <th>Stock Quantity</th>
+    <th>Buying Price</th>
+    <th>Selling Price</th>
+    <th>ID</th>
+  </tr>
+  {%for film in films%}
+  <tr>
+    <td>{{film.title}}</td>
+    <td>{{film.director.name}}</td>
+    <td>{{film.distributor.name}}</td>
+    <td>{{film.stock_quantity}}</td>
+    <td>{{film.buying_price}}</td>
+    <td>{{film.selling_price}}</td>
+    <td>{{film.id}}</td>
+  </tr>
+  {%endfor%}
+</table>
+{%endblock%}
+
+<!-- <table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  {% for user in users %}
+  <tr>
+    <td><a href="/users/{{ user.id }}"> {{user.name}} </a></td>
+  </tr>
+  {% endfor %}
+</table> -->
