@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-from controllers.controller import films_blueprint
+from controllers.film_controller import films_blueprint
 
 app = Flask(__name__)
 

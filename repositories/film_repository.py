@@ -28,3 +28,5 @@ def select_all():
         film = Film(row['title'], director, distributor,row['stock_quantity'], row['buying_price'], row['selling_price'], row['id'])
         films.append(film)
     return films
+
+
