@@ -10,8 +10,8 @@ import repositories.distributor_repository as distributor_repository
 import repositories.director_repository as director_repository
 
 
-
 films_blueprint = Blueprint("films", __name__)
+
 
 @films_blueprint.route("/films")
 def films():
@@ -33,10 +33,10 @@ def add_item():
     buying_price = request.form ['buying_price']
     selling_price = request.form ['selling_price']
     director = director_repository.select(director_id)
-    # director_repository.save(director)
     distributor = distributor_repository.select(distributor_id)
+  
     
-    # distributor_repository.save(distributor)
+
     film = Film(title, director, distributor, quantity, buying_price, selling_price)
     film_repository.save(film)
     return redirect("/films")

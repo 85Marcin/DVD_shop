@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {%block contend%}
+
+<form action="/distributors" method="post">
+  <div>
+    <label for="distributor">Name: </label>
+    <input type="text" id="distributor" name="distributor" />
+  </div>
+  <input type="submit" value="add distributor" />
+</form>
+{%for distributor in distributors%}
+<ul>
+  <li>{{distributor.name}}</li>
+</ul>
+{%endfor%} {%endblock%}

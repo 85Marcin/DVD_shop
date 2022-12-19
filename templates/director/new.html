@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {%block contend%}
+<form action="/directors" method="post">
+  <div>
+    <label for="director">Name: </label>
+    <input type="text" id="director" name="director" />
+  </div>
+  <input type="submit" value="add director" />
+</form>
+{%endblock%}
