@@ -20,20 +20,23 @@ def films():
 
 @films_blueprint.route("/new")
 def new():
-    return render_template("new/new.html")
+    directors = director_repository.select_all()
+    distributors = distributor_repository.select_all()
+    return render_template("new/new.html", directors=directors, distributors=distributors)
 
 @films_blueprint.route("/new", methods=['POST'])
 def add_item():
     title = request.form['title']
-    director_name = request.form['director']
-    distributor_name = request.form['distributor']
+    director_id = request.form['director']
+    distributor_id = request.form['distributor']
     quantity = request.form ['quantity']
     buying_price = request.form ['buying_price']
     selling_price = request.form ['selling_price']
-    director = Director(director_name)
-    director_repository.save(director)
-    distributor = Distributor(distributor_name)
-    distributor_repository.save(distributor)
+    director = director_repository.select(director_id)
+    # director_repository.save(director)
+    distributor = distributor_repository.select(distributor_id)
+    
+    # distributor_repository.save(distributor)
     film = Film(title, director, distributor, quantity, buying_price, selling_price)
     film_repository.save(film)
     return redirect("/films")

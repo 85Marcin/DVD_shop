@@ -23,3 +23,17 @@ def select(id):
         result = results[0]
         distributor = Distributor(result['name'], result['id'] )
     return distributor
+
+def select_all():
+    distributors = []
+    sql = "SELECT * FROM distributors"
+    results = run_sql(sql)
+
+    for row in results:
+        distributor = Distributor(row['name'], row['id'])
+        distributors.append(distributor)
+    return distributors
+
+
+
+

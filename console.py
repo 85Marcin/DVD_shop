@@ -31,6 +31,8 @@ film_repository.save(blue_velvet)
 big_sleep = Film("Big Sleep", howard_hawks, warner_home_enertainment, 9, 3,14)
 film_repository.save(big_sleep)
 
+print(director_repository.select_all())
+
 
 
 

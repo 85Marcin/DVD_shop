@@ -19,9 +19,9 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        director = Director(row['name'])
+        director = Director(row['name'], row['id'])
         directors.append(director)
-    return director
+    return directors
 
 def select(id):
     director = None
