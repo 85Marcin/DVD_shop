@@ -29,9 +29,24 @@ def select_all():
         films.append(film)
     return films
 
+def select(id):
+    film = None
+    sql = "SELECT * FROM films WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    if results:
+        result = results[0]
+        director = director_repository.select(result['director_id'])
+        distributor = distributor_repository.select(result['distributor_id'])
+        film = Film(result['title'], director, distributor,result['stock_quantity'], result['buying_price'], result['selling_price'], result['id'] )
+    return film
+
 def delete(id):
     sql = "DELETE FROM films WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+
 
 

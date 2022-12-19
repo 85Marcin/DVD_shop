@@ -46,5 +46,12 @@ def delete(id):
     film_repository.delete(id)
     return redirect('/films')
 
+@films_blueprint.route("/films/<id>/edit")
+def edit(id):
+    film_repository.select(id)
+    return render_template("/film/edit.html" ,films = films)
+
+
+
 
 

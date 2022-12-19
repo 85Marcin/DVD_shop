@@ -12,22 +12,30 @@
   </tr>
   {%for film in films%}
   <tr>
-    <td>{{film.title}}</td>
+    <td>
+      {%if film.stock_quantity == 0 %} &#10060; {{film.title}}{%elif
+      film.stock_quantity > 0 and film.stock_quantity < 5 %} &#9888;&#65039;
+      {{film.title}}{%else%} {{film.title}} {%endif%}
+    </td>
     <td>{{film.director.name}}</td>
     <td>{{film.distributor.name}}</td>
     <td>
-      {%if film.stock_quantity == 0 %} {{film.stock_quantity}} &#10060; {%elif
-      film.stock_quantity > 0 and film.stock_quantity < 5 %}
-      {{film.stock_quantity}} &#9888;&#65039;{%else%} {{film.stock_quantity}}
-      {%endif%}
+      {{film.stock_quantity}}
     </td>
     <td>{{film.buying_price}}</td>
     <td>{{film.selling_price}}</td>
     <td>{{film.profit}}</td>
     <td>
-      <form action="/films/{{ film.id }}/delete" method="POST">
+      <form action="/films/{{ film.id }}/delete" method="post">
         <input type="submit" value="delete" />
       </form>
+    </td>
+    <td>
+      <form action="/films/{{film.id}}/edit" method ="get">
+        <input type="submit" value="edit" name="edit" id="edit"/>
+      </form>
+    </td>
+
     </td>
   </tr>
   {%endfor%}
