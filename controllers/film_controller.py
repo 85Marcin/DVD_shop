@@ -48,8 +48,12 @@ def delete(id):
 
 @films_blueprint.route("/films/<id>/edit")
 def edit(id):
-    film_repository.select(id)
-    return render_template("/film/edit.html" ,films = films)
+    film = film_repository.select(id)
+    director = film.director
+    distributor = film.distributor
+    return render_template("/film/edit.html", film=film, director=director, distributor=distributor)
+
+
 
 
 

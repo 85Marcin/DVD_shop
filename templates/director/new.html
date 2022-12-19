@@ -6,4 +6,10 @@
   </div>
   <input type="submit" value="add director" />
 </form>
+<ul>
+  {%for director in directors%}
+  <li>{{director.name}}</li>
+  {%endfor%}
+</ul>
+
 {%endblock%}

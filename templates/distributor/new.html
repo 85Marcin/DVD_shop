@@ -7,8 +7,10 @@
   </div>
   <input type="submit" value="add distributor" />
 </form>
-{%for distributor in distributors%}
 <ul>
+  {%for distributor in distributors%}
   <li>{{distributor.name}}</li>
+  {%endfor%}
 </ul>
-{%endfor%} {%endblock%}
+
+{%endblock%}

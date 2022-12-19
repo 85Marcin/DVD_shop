@@ -9,10 +9,11 @@ directors_blueprint = Blueprint("directors", __name__)
 
 @directors_blueprint.route("/directors")
 def directors():
-    return render_template("director/new.html")
+    directors = director_repository.select_all()
+    return render_template("director/new.html", directors=directors)
 
 @directors_blueprint.route("/directors", methods=['POST'])
-def add_distributor():
+def add_director():
     director_name = request.form['director']
     director = Director(director_name)
     director_repository.save(director)
