@@ -18,13 +18,13 @@ def films():
     films = film_repository.select_all()
     return render_template("stock/index.html", films = films)
 
-@films_blueprint.route("/new")
+@films_blueprint.route("/film")
 def new():
     directors = director_repository.select_all()
     distributors = distributor_repository.select_all()
-    return render_template("new/new.html", directors=directors, distributors=distributors)
+    return render_template("film/new.html", directors=directors, distributors=distributors)
 
-@films_blueprint.route("/new", methods=['POST'])
+@films_blueprint.route("/film", methods=['POST'])
 def add_item():
     title = request.form['title']
     director_id = request.form['director']
@@ -41,6 +41,10 @@ def add_item():
     film_repository.save(film)
     return redirect("/films")
 
+@films_blueprint.route("/films/<id>/delete", methods=['POST'])
+def delete(id):
+    film_repository.delete(id)
+    return redirect('/films')
 
 
 

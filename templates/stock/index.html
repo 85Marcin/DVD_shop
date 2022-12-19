@@ -26,9 +26,12 @@
     <td>{{film.buying_price}}</td>
     <td>{{film.selling_price}}</td>
     <td>{{film.profit}}</td>
+    <td>
+      <form action="/films/{{ film.id }}/delete" method="POST">
+        <input type="submit" value="delete" />
+      </form>
+    </td>
   </tr>
   {%endfor%}
 </table>
 {%endblock%}
-
-

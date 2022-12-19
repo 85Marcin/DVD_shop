@@ -29,4 +29,9 @@ def select_all():
         films.append(film)
     return films
 
+def delete(id):
+    sql = "DELETE FROM films WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
 
