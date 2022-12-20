@@ -82,5 +82,22 @@ def filter_by_distributor(id):
     return films_by_distributor
 
 
+def filter_by_genre(genre):
+    films_by_genre = []
+    sql = "SELECT * FROM films WHERE genre = %s"
+    values = [genre]
+    results = run_sql(sql, values)
+
+    if results:
+        for row in results:
+            director = director_repository.select(row['director_id'])
+            distributor = distributor_repository.select(row['distributor_id'])
+            film = Film(row['title'], row['genre'], director, distributor,row['stock_quantity'], row['buying_price'], row['selling_price'], row['id'])
+            films_by_genre.append(film)
+    return films_by_genre
+
+
+
+
 
 

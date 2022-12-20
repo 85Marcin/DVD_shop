@@ -21,6 +21,17 @@
   <input type="submit">
   </form>
 </div>
+<div>
+  <form action="/films/filter3" method="post">
+  <label for="genre">Filter by genre: </label>
+  <select name="genre" id="genre">
+    {%for genre in genres%}
+  <option value="{{genre}}">{{genre}}</option>
+  {%endfor%}
+  </select>
+  <input type="submit">
+  </form>
+</div>
 <br>
 <table class="stock_table">
   <tr>
