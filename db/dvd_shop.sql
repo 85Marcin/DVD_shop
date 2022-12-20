@@ -16,6 +16,7 @@ CREATE TABLE distributors (
 CREATE TABLE films (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
+  genre VARCHAR(255),
   director_id INT REFERENCES directors(id) ON DELETE CASCADE,
   distributor_id INT REFERENCES distributors(id) ON DELETE CASCADE,
   stock_quantity INT,

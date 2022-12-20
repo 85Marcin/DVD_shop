@@ -29,6 +29,7 @@ def new():
 @films_blueprint.route("/film", methods=['POST'])
 def add_item():
     title = request.form['title']
+    genre = request.form ['genre']
     director_id = request.form['director']
     distributor_id = request.form['distributor']
     quantity = request.form ['quantity']
@@ -39,7 +40,7 @@ def add_item():
   
     
 
-    film = Film(title, director, distributor, quantity, buying_price, selling_price)
+    film = Film(title, genre, director, distributor, quantity, buying_price, selling_price)
     film_repository.save(film)
     return redirect("/films")
 

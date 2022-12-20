@@ -22,13 +22,13 @@ distributor_repository.save(warner_home_enertainment)
 high_fliers_films = Distributor("High Fliers Films")
 distributor_repository.save(high_fliers_films)
 
-rio_bravo = Film("Rio Bravo",howard_hawks, warner_home_enertainment, 0, 3, 11)
+rio_bravo = Film("Rio Bravo", "western", howard_hawks, warner_home_enertainment, 0, 3, 11)
 film_repository.save(rio_bravo)
-blue_velvet = Film("Blue Velvet", david_lnych, high_fliers_films, 3, 4, 12)
+blue_velvet = Film("Blue Velvet","thriller", david_lnych, high_fliers_films, 3, 4, 12)
 film_repository.save(blue_velvet)
 
 
-big_sleep = Film("Big Sleep", howard_hawks, warner_home_enertainment, 9, 3,14)
+big_sleep = Film("Big Sleep", "film noir", howard_hawks, warner_home_enertainment, 9, 3,14)
 film_repository.save(big_sleep)
 
 

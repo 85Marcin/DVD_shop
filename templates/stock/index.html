@@ -25,6 +25,7 @@
 <table class="stock_table">
   <tr>
     <th>Title</th>
+    <th>Genre</th>
     <th>Director</th>
     <th>Distributor</th>
     <th>Stock Quantity</th>
@@ -37,6 +38,7 @@
     <td>{{film.title}}{%if film.stock_quantity == 0 %} &#10060; {%elif
       film.stock_quantity > 0 and film.stock_quantity < 5 %} &#9888;&#65039;
       {%else%}  {%endif%}</td>
+    <td>{{film.genre}}</td>
     <td>{{film.director.name}}</td>
     <td>{{film.distributor.name}}</td>
     <td>
