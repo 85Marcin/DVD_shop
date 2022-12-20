@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {%block contend%}
 
-<table>
+<table class="stock_table">
   <tr>
     <th>Title</th>
     <th>Director</th>
@@ -12,12 +12,9 @@
   </tr>
   {%for film in films%}
   <tr>
-    <td>
-      {%if film.stock_quantity == 0 %} &#10060; {%elif
+    <td>{{film.title}}{%if film.stock_quantity == 0 %} &#10060; {%elif
       film.stock_quantity > 0 and film.stock_quantity < 5 %} &#9888;&#65039;
-      {%else%}  {%endif%}
-    </td>
-    <td>{{film.title}}</td>
+      {%else%}  {%endif%}</td>
     <td>{{film.director.name}}</td>
     <td>{{film.distributor.name}}</td>
     <td>

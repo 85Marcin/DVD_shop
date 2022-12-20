@@ -48,7 +48,6 @@ def delete(id):
     run_sql(sql, values)
 
 def update(film):
-    print(film.director.__dict__)
     sql = "UPDATE films SET (title, director_id, distributor_id, stock_quantity, buying_price, selling_price) = (%s, %s, %s, %s, %s,%s) WHERE id = %s"
 
     values = [film.title, film.director.id, film.distributor.id, film.stock_quantity, film.buying_price, film.selling_price, film.id]
