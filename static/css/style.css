@@ -1,5 +1,23 @@
 body {
-  background-color: rgb(238, 234, 228);
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: #f7f4e9;
+  font-family: "Hanken Grotesk", sans-serif;
+}
+header {
+  font-family: "Philosopher", sans-serif;
+  font-size: 50px;
+  text-align: center;
+  background-color: #438945;
+  padding: 15px;
+  margin: 5px;
+}
+nav {
+  display: flex;
+  background-color: #eba63f;
+  padding: 5px;
+  margin: 5px;
+  gap: 10px;
 }
 table {
   font-family: arial, sans-serif;
@@ -15,4 +33,20 @@ th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+#new_item,
+#edit_item,
+#new_director {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  align-items: center;
+  align-content: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
 }

@@ -8,10 +8,26 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Philosopher:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
-    <nav><a href="/">Home</a></nav>
+    <header>DVD Shop</header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/films">View stock</a>
+      <a href="/film">Add item</a>
+      <a href="/distributors">Add distributor</a>
+      <a href="/directors">Add director</a>
+    </nav>
     {%block contend%} {%endblock%}
+    <footer>Footer</footer>
   </body>
 </html>

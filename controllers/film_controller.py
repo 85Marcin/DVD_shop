@@ -15,8 +15,9 @@ films_blueprint = Blueprint("films", __name__)
 
 @films_blueprint.route("/films")
 def films():
+    directors = director_repository.select_all()
     films = film_repository.select_all()
-    return render_template("stock/index.html", films = films)
+    return render_template("stock/index.html", films = films, directors=directors)
 
 @films_blueprint.route("/film")
 def new():
@@ -65,7 +66,13 @@ def update_film(id):
     return redirect("/films")
 
 
-
+@films_blueprint.route("/films/filter", methods=['POST'])
+def select_by_director():
+    id = request.form['director']
+    films_by_director = film_repository.filter_by_director(id)
+    directors = director_repository.select_all()
+    return render_template("stock/index.html", films_by_director=films_by_director, films=films_by_director, directors=directors)
+    
 
 
 

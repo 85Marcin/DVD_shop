@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {%block contend%}
-<form action="/film" method="post">
+<form id="new_item" action="/film" method="post">
   <div>
     <label for="title">Title: </label>
     <input type="text" id="title" name="title" />
@@ -44,6 +44,8 @@
       autofocus
     />
   </div>
-  <input type="submit" value="add item" />
+  <div>
+    <input type="submit" value="add item" />
+  </div>
 </form>
 {%endblock%}

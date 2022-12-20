@@ -1,5 +1,16 @@
 {% extends 'base.html' %} {%block contend%}
-
+<div>
+  <form action="/films/filter" method="post">
+  <label for="director">Filter by director: </label>
+  <select name="director" id="director">
+    {% for director in directors %}
+    <option value="{{ director.id }}">{{ director.name }}</option>
+    {% endfor %}
+  </select>
+  <input type="submit">
+</form>
+</div>
+<br>
 <table class="stock_table">
   <tr>
     <th>Title</th>
