@@ -20,7 +20,7 @@
   </tr>
 </table>
 
-<form action="/films/<id>/edit" method="post">
+<form action="/films/{{film.id}}/edit" method="post">
   <input type="hidden" id="title" name="title" value="{{film.title}}" />
   <input
     type="hidden"
@@ -37,27 +37,15 @@
 
   <div>
     <label for="quantity">Quantity</label>
-    <input type="number" id="quantity" name="quantity" required autofocus />
+    <input type="number" id="quantity" name="quantity" autofocus />
   </div>
   <div>
     <label for="buying_price">Buying Price</label>
-    <input
-      type="number"
-      id="buying_price"
-      name="buying_price"
-      required
-      autofocus
-    />
+    <input type="number" id="buying_price" name="buying_price" />
   </div>
   <div>
     <label for="selling_price">Selling Price</label>
-    <input
-      type="number"
-      id="selling_price"
-      name="selling_price"
-      required
-      autofocus
-    />
+    <input type="number" id="selling_price" name="selling_price" />
   </div>
   <input type="submit" value="Update" />
 </form>

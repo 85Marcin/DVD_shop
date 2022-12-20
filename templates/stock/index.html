@@ -13,10 +13,11 @@
   {%for film in films%}
   <tr>
     <td>
-      {%if film.stock_quantity == 0 %} &#10060; {{film.title}}{%elif
+      {%if film.stock_quantity == 0 %} &#10060; {%elif
       film.stock_quantity > 0 and film.stock_quantity < 5 %} &#9888;&#65039;
-      {{film.title}}{%else%} {{film.title}} {%endif%}
+      {%else%}  {%endif%}
     </td>
+    <td>{{film.title}}</td>
     <td>{{film.director.name}}</td>
     <td>{{film.distributor.name}}</td>
     <td>
@@ -31,8 +32,8 @@
       </form>
     </td>
     <td>
-      <form action="/films/{{film.id}}/edit" method ="get">
-        <input type="submit" value="edit" name="edit" id="edit"/>
+      
+      <a href="/films/{{film.id}}/edit"> <input type="submit" value="edit" name="edit" id="edit"/></a>  
       </form>
     </td>
 

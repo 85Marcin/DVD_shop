@@ -53,6 +53,20 @@ def edit(id):
     distributor = film.distributor
     return render_template("/film/edit.html", film=film, director=director, distributor=distributor)
 
+@films_blueprint.route("/films/<id>/edit", methods=['POST'])
+def update_film(id):
+    film = film_repository.select(id)
+    film.title = request.form['title']
+    film.stock_quantity = request.form ['quantity']
+    film.buying_price = request.form ['buying_price']
+    film.selling_price = request.form ['selling_price']
+
+    film_repository.update(film)
+
+    return redirect("/films")
+
+
+
 
 
 
