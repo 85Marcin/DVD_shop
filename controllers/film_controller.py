@@ -15,9 +15,10 @@ films_blueprint = Blueprint("films", __name__)
 
 @films_blueprint.route("/films")
 def films():
+    distributors = distributor_repository.select_all()
     directors = director_repository.select_all()
     films = film_repository.select_all()
-    return render_template("stock/index.html", films = films, directors=directors)
+    return render_template("stock/index.html", films = films, directors=directors, distributors=distributors)
 
 @films_blueprint.route("/film")
 def new():
@@ -66,13 +67,25 @@ def update_film(id):
     return redirect("/films")
 
 
-@films_blueprint.route("/films/filter", methods=['POST'])
+@films_blueprint.route("/films/filter1", methods=['POST'])
 def select_by_director():
     id = request.form['director']
     films_by_director = film_repository.filter_by_director(id)
-    print(films_by_director)
     directors = director_repository.select_all()
-    return render_template("stock/index.html", films_by_director=films_by_director, films=films_by_director, directors=directors)
+    distributors = distributor_repository.select_all()
+    return render_template("stock/index.html",  films=films_by_director, directors=directors, distributors=distributors)
+
+@films_blueprint.route("/films/filter2", methods=['POST'])
+def select_by_distributor():
+    id = request.form['distributor']
+    films_by_distributor = film_repository.filter_by_distributor(id)
+    distributors = distributor_repository.select_all()
+    directors = director_repository.select_all()
+    return render_template("stock/index.html", films=films_by_distributor, 
+    distributors=distributors, directors=directors)
+
+
+
     
 
 

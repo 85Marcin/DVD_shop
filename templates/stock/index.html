@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {%block contend%}
 <div>
-  <form action="/films/filter" method="post">
+  <form action="/films/filter1" method="post">
   <label for="director">Filter by director: </label>
   <select name="director" id="director">
     {% for director in directors %}
@@ -9,6 +9,17 @@
   </select>
   <input type="submit">
 </form>
+</div>
+<div>
+  <form action="/films/filter2" method="post">
+  <label for="distributor">Filter by distributor: </label>
+  <select name="distributor" id="distributor">
+  {%for distributor in distributors%}
+  <option value="{{distributor.id}}">{{distributor.name}}</option>
+  {%endfor%}
+  </select>
+  <input type="submit">
+  </form>
 </div>
 <br>
 <table class="stock_table">

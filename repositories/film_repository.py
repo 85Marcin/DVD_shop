@@ -67,6 +67,20 @@ def filter_by_director(id):
             films_by_director.append(film)
     return films_by_director
 
+def filter_by_distributor(id):
+    films_by_distributor = []
+    sql = "SELECT * FROM films WHERE distributor_id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    if results:
+        for row in results:
+            director = director_repository.select(row['director_id'])
+            distributor = distributor_repository.select(row['distributor_id'])
+            film = Film(row['title'], director, distributor,row['stock_quantity'], row['buying_price'], row['selling_price'], row['id'])
+            films_by_distributor.append(film)
+    return films_by_distributor
+
 
 
 
