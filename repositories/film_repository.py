@@ -64,7 +64,7 @@ def filter_by_director(id):
             director = director_repository.select(row['director_id'])
             distributor = distributor_repository.select(row['distributor_id'])
             film = Film(row['title'], director, distributor,row['stock_quantity'], row['buying_price'], row['selling_price'], row['id'])
-        films_by_director.append(film)
+            films_by_director.append(film)
     return films_by_director
 
 

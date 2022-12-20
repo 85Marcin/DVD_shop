@@ -70,6 +70,7 @@ def update_film(id):
 def select_by_director():
     id = request.form['director']
     films_by_director = film_repository.filter_by_director(id)
+    print(films_by_director)
     directors = director_repository.select_all()
     return render_template("stock/index.html", films_by_director=films_by_director, films=films_by_director, directors=directors)
     
