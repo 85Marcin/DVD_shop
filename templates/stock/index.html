@@ -1,38 +1,38 @@
 {% extends 'base.html' %} {%block contend%}
 <div>
   <form class="filter" action="/films/filter1" method="post">
-  <label for="director">Filter by director: </label>
-  <select name="director" id="director">
-    {% for director in directors %}
-    <option value="{{ director.id }}">{{ director.name }}</option>
-    {% endfor %}
-  </select>
-  <input type="submit">
-</form>
+    <label for="director">Filter by director: </label>
+    <select name="director" id="director">
+      {% for director in directors %}
+      <option value="{{ director.id }}">{{ director.name }}</option>
+      {% endfor %}
+    </select>
+    <input class="filter_btn" type="submit" value="submit" />
+  </form>
 </div>
 <div>
   <form class="filter" action="/films/filter2" method="post">
-  <label for="distributor">Filter by distributor: </label>
-  <select name="distributor" id="distributor">
-  {%for distributor in distributors%}
-  <option value="{{distributor.id}}">{{distributor.name}}</option>
-  {%endfor%}
-  </select>
-  <input type="submit">
+    <label for="distributor">Filter by distributor: </label>
+    <select name="distributor" id="distributor">
+      {%for distributor in distributors%}
+      <option value="{{distributor.id}}">{{distributor.name}}</option>
+      {%endfor%}
+    </select>
+    <input class="filter_btn" type="submit" value="submit" />
   </form>
 </div>
 <div>
   <form class="filter" action="/films/filter3" method="post">
-  <label for="genre">Filter by genre: </label>
-  <select name="genre" id="genre">
-    {%for genre in genres%}
-  <option value="{{genre}}">{{genre}}</option>
-  {%endfor%}
-  </select>
-  <input type="submit">
+    <label for="genre">Filter by genre: </label>
+    <select name="genre" id="genre">
+      {%for genre in genres%}
+      <option value="{{genre}}">{{genre}}</option>
+      {%endfor%}
+    </select>
+    <input class="filter_btn" type="submit" value="submit" />
   </form>
 </div>
-<br>
+<br />
 <table class="stock_table">
   <tr>
     <th>Title</th>
@@ -46,29 +46,32 @@
   </tr>
   {%for film in films%}
   <tr>
-    <td>{{film.title}}{%if film.stock_quantity == 0 %} &#10060; {%elif
+    <td>
+      {{film.title}}{%if film.stock_quantity == 0 %} &#10060; {%elif
       film.stock_quantity > 0 and film.stock_quantity < 5 %} &#9888;&#65039;
-      {%else%}  {%endif%}</td>
+      {%else%} {%endif%}
+    </td>
     <td>{{film.genre}}</td>
     <td>{{film.director.name}}</td>
     <td>{{film.distributor.name}}</td>
-    <td>
-      {{film.stock_quantity}}
-    </td>
+    <td>{{film.stock_quantity}}</td>
     <td>{{film.buying_price}}</td>
     <td>{{film.selling_price}}</td>
     <td>{{film.profit}}</td>
     <td>
-      <form action="/films/{{ film.id }}/delete" method="post">
-        <input type="submit" value="delete" />
-      </form>
+      <a href="/films/{{film.id}}/edit">
+        <input
+          class="stock_btn"
+          type="submit"
+          value="edit"
+          name="edit"
+          id="edit"
+      /></a>
     </td>
     <td>
-      
-      <a href="/films/{{film.id}}/edit"> <input type="submit" value="edit" name="edit" id="edit"/></a>  
+      <form action="/films/{{ film.id }}/delete" method="post">
+        <input class="stock_btn" type="submit" value="delete" />
       </form>
-    </td>
-
     </td>
   </tr>
   {%endfor%}

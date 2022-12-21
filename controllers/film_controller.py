@@ -24,7 +24,6 @@ def films():
     for film in films:
         if film.genre not in genres:
             genres.append(film.genre)
-
     return render_template("stock/index.html", films = films, directors=directors, distributors=distributors, genres=genres)
 
 @films_blueprint.route("/film")
@@ -70,9 +69,7 @@ def update_film(id):
     film.stock_quantity = request.form ['quantity']
     film.buying_price = request.form ['buying_price']
     film.selling_price = request.form ['selling_price']
-
     film_repository.update(film)
-
     return redirect("/films")
 
 
@@ -80,10 +77,14 @@ def update_film(id):
 def select_by_director():
     id = request.form['director']
     films_by_director = film_repository.filter_by_director(id)
-    directors = director_repository.select_all()
     distributors = distributor_repository.select_all()
-    
-    return render_template("stock/index.html",  films=films_by_director, directors=directors, distributors=distributors)
+    directors = director_repository.select_all()
+    films = film_repository.select_all()
+    genres = []
+    for film in films:
+        if film.genre not in genres:
+            genres.append(film.genre)
+    return render_template("stock/index.html",  films=films_by_director, distributors=distributors, directors=directors, genres=genres)
 
 @films_blueprint.route("/films/filter2", methods=['POST'])
 def select_by_distributor():
@@ -91,8 +92,12 @@ def select_by_distributor():
     films_by_distributor = film_repository.filter_by_distributor(id)
     distributors = distributor_repository.select_all()
     directors = director_repository.select_all()
-    return render_template("stock/index.html", films=films_by_distributor, 
-    distributors=distributors, directors=directors)
+    films = film_repository.select_all()
+    genres = []
+    for film in films:
+        if film.genre not in genres:
+            genres.append(film.genre)
+    return render_template("stock/index.html", films=films_by_distributor, distributors=distributors, directors=directors, genres=genres)
 
 @films_blueprint.route("/films/filter3", methods=['POST'])
 def select_by_genre():
@@ -100,7 +105,12 @@ def select_by_genre():
     films_by_genre = film_repository.filter_by_genre(genre)
     distributors = distributor_repository.select_all()
     directors = director_repository.select_all()
-    return render_template("stock/index.html", films=films_by_genre, distributors=distributors, directors=directors)
+    films = film_repository.select_all()
+    genres = []
+    for film in films:
+        if film.genre not in genres:
+            genres.append(film.genre)
+    return render_template("stock/index.html", films=films_by_genre, distributors=distributors, directors=directors, genres=genres)
 
 
 
