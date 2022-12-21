@@ -28,6 +28,8 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  margin-left: 10px;
+  margin-top: 30px;
 }
 td,
 th {
@@ -44,8 +46,10 @@ tr:nth-child(even) {
 #edit_item,
 #new_director {
   color: white;
-  margin: 20px;
-  margin-right: 60%;
+  margin-top: 30px;
+  margin-right: 65%;
+  margin-bottom: 50px;
+  margin-left: 10px;
   display: flex;
   flex-direction: column;
   row-gap: 15px;
@@ -62,14 +66,16 @@ footer {
   font-size: 20px;
   color: white;
   text-align: center;
-  background-color: #28559a;
+  background-color: #4b9fe1;
   padding: 10px;
   margin: 5px;
   width: 80%;
 }
 .filter {
-  /* color: white;
-  background-color: #9daaf2; */
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-left: 15px;
 }
 
 a {
@@ -88,9 +94,24 @@ menu {
   width: 25%;
   padding: 25px;
 
-  margin: 20px;
+  margin: 10px;
+  margin-top: 30px;
 }
 
-#btn_distributor {
-  width: 30%;
+.button {
+  background-color: #150734;
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 200px;
+}
+
+.add_table {
+  width: 50%;
 }

@@ -5,12 +5,17 @@
     <label for="distributor">Name: </label>
     <input type="text" id="distributor" name="distributor" />
   </div>
-  <input id="btn_distributor" type="submit" value="add distributor" />
+  <input class="button" type="submit" value="add distributor" />
 </form>
-<ul>
-  {%for distributor in distributors%}
-  <li>{{distributor.name}}</li>
-  {%endfor%}
-</ul>
+<table class="add_table">
+  <tr>
+    <th>DISTRIBUTORS</th>
+    {%for distributor in distributors%}
+  </tr>
+  <tr>
+    <td>{{distributor.name}}</td>
+    {%endfor%}
+  </tr>
+</table>
 
 {%endblock%}

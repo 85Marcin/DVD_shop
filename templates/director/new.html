@@ -4,12 +4,17 @@
     <label for="director">Name: </label>
     <input type="text" id="director" name="director" />
   </div>
-  <input type="submit" value="add director" />
+  <input class="button" type="submit" value="add director" />
 </form>
-<ul>
-  {%for director in directors%}
-  <li>{{director.name}}</li>
-  {%endfor%}
-</ul>
+<table class="add_table">
+  <tr>
+    <th>DIRECTORS</th>
+    {%for director in directors%}
+  </tr>
+  <tr>
+    <td>{{director.name}}</td>
+    {%endfor%}
+  </tr>
+</table>
 
 {%endblock%}
