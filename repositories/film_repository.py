@@ -7,7 +7,7 @@ import repositories.distributor_repository as distributor_repository
 
 def save(film):
     sql = "INSERT INTO films(title, genre, director_id, distributor_id, stock_quantity, buying_price, selling_price, profit) VALUES (%s, %s, %s, %s, %s, %s, %s, %s) RETURNING id"
-    values = [film.title, film.genre ,film.director.id, film.distributor.id, film.stock_quantity, film.buying_price, film.selling_price, film.profit]
+    values = [film.title, film.genre, film.director.id, film.distributor.id, film.stock_quantity, film.buying_price, film.selling_price, film.profit]
     results = run_sql(sql, values)
     film.id = results[0]['id']
     return film
