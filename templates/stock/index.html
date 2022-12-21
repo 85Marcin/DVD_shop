@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {%block contend%}
 <div>
-  <form action="/films/filter1" method="post">
+  <form class="filter" action="/films/filter1" method="post">
   <label for="director">Filter by director: </label>
   <select name="director" id="director">
     {% for director in directors %}
@@ -11,7 +11,7 @@
 </form>
 </div>
 <div>
-  <form action="/films/filter2" method="post">
+  <form class="filter" action="/films/filter2" method="post">
   <label for="distributor">Filter by distributor: </label>
   <select name="distributor" id="distributor">
   {%for distributor in distributors%}
@@ -22,7 +22,7 @@
   </form>
 </div>
 <div>
-  <form action="/films/filter3" method="post">
+  <form class="filter" action="/films/filter3" method="post">
   <label for="genre">Filter by genre: </label>
   <select name="genre" id="genre">
     {%for genre in genres%}

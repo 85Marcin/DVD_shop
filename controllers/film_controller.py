@@ -96,6 +96,7 @@ def select_by_distributor():
 @films_blueprint.route("/films/filter3", methods=['POST'])
 def select_by_genre():
     genre = request.form['genre']
+    genre = genre.lower()
     films_by_genre = film_repository.filter_by_genre(genre)
     distributors = distributor_repository.select_all()
     directors = director_repository.select_all()
