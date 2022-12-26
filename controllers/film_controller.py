@@ -4,6 +4,7 @@ from flask import Blueprint
 from models.director import Director
 from models.distributor import Distributor
 from models.film import Film
+from models.helper import get_lists
 
 import repositories.film_repository as film_repository
 import repositories.distributor_repository as distributor_repository
@@ -17,13 +18,8 @@ films_blueprint = Blueprint("films", __name__)
 
 @films_blueprint.route("/films")
 def films():
-    distributors = distributor_repository.select_all()
-    directors = director_repository.select_all()
+    directors, distributors, genres = get_lists()
     films = film_repository.select_all()
-    genres = []
-    for film in films:
-        if film.genre not in genres:
-            genres.append(film.genre)
     return render_template("stock/index.html", films = films, directors=directors, distributors=distributors, genres=genres)
 
 @films_blueprint.route("/film")
@@ -36,7 +32,7 @@ def new():
 def add_item():
     title = request.form['title']
     genre = request.form ['genre']
-    genre = genre.lower()
+    # genre = genre.lower()
     director_id = request.form['director']
     distributor_id = request.form['distributor']
     quantity = request.form ['quantity']
@@ -45,8 +41,6 @@ def add_item():
     director = director_repository.select(director_id)
     distributor = distributor_repository.select(distributor_id)
   
-    
-
     film = Film(title, genre, director, distributor, quantity, buying_price, selling_price)
     film_repository.save(film)
     return redirect("/films")
@@ -73,44 +67,22 @@ def update_film(id):
     return redirect("/films")
 
 
-@films_blueprint.route("/films/filter1", methods=['POST'])
-def select_by_director():
-    id = request.form['director']
-    films_by_director = film_repository.filter_by_director(id)
-    distributors = distributor_repository.select_all()
-    directors = director_repository.select_all()
-    films = film_repository.select_all()
-    genres = []
-    for film in films:
-        if film.genre not in genres:
-            genres.append(film.genre)
-    return render_template("stock/index.html",  films=films_by_director, distributors=distributors, directors=directors, genres=genres)
-
-@films_blueprint.route("/films/filter2", methods=['POST'])
-def select_by_distributor():
-    id = request.form['distributor']
-    films_by_distributor = film_repository.filter_by_distributor(id)
-    distributors = distributor_repository.select_all()
-    directors = director_repository.select_all()
-    films = film_repository.select_all()
-    genres = []
-    for film in films:
-        if film.genre not in genres:
-            genres.append(film.genre)
-    return render_template("stock/index.html", films=films_by_distributor, distributors=distributors, directors=directors, genres=genres)
-
-@films_blueprint.route("/films/filter3", methods=['POST'])
-def select_by_genre():
-    genre = request.form['genre']
-    films_by_genre = film_repository.filter_by_genre(genre)
-    distributors = distributor_repository.select_all()
-    directors = director_repository.select_all()
-    films = film_repository.select_all()
-    genres = []
-    for film in films:
-        if film.genre not in genres:
-            genres.append(film.genre)
-    return render_template("stock/index.html", films=films_by_genre, distributors=distributors, directors=directors, genres=genres)
+@films_blueprint.route("/films/filter", methods=['GET'])
+def filter_films():
+    form_type = request.args.get('form_type')
+    if form_type == 'filter_by_director':
+        id = request.args.get('director')
+        films = film_repository.filter_by_director(id)
+    elif form_type == 'filter_by_distributor':
+        id = request.args.get('distributor')
+        films = film_repository.filter_by_distributor(id)
+    elif form_type == 'filter_by_genre':
+        genre = request.args.get('genre')
+        films = film_repository.filter_by_genre(genre)
+    else:
+        films = film_repository.select_all()
+    directors, distributors, genres = get_lists()
+    return render_template("stock/index.html", films=films, distributors=distributors, directors=directors, genres=genres)
 
 
 

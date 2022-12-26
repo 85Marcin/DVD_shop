@@ -1,35 +1,38 @@
 {% extends 'base.html' %} {%block contend%}
 <div>
-  <form class="filter" action="/films/filter1" method="post">
-    <label for="director">Filter by director: </label>
+  <form class="filter" action="/films/filter" method="get">
+    <input type="hidden" name="form_type" value="filter_by_director" />
+    <label for="director">Films by director: </label>
     <select name="director" id="director">
       {% for director in directors %}
       <option value="{{ director.id }}">{{ director.name }}</option>
       {% endfor %}
     </select>
-    <input class="filter_btn" type="submit" value="submit" />
+    <input class="filter_btn" type="submit" value="filter" />
   </form>
 </div>
 <div>
-  <form class="filter" action="/films/filter2" method="post">
-    <label for="distributor">Filter by distributor: </label>
+  <form class="filter" action="/films/filter" method="get">
+    <input type="hidden" name="form_type" value="filter_by_distributor"
+    <label for="distributor">Films by distributor: </label>
     <select name="distributor" id="distributor">
       {%for distributor in distributors%}
       <option value="{{distributor.id}}">{{distributor.name}}</option>
       {%endfor%}
     </select>
-    <input class="filter_btn" type="submit" value="submit" />
+    <input class="filter_btn" type="submit" value="filter" />
   </form>
 </div>
 <div>
-  <form class="filter" action="/films/filter3" method="post">
-    <label for="genre">Filter by genre: </label>
+  <form class="filter" action="/films/filter" method="get">
+    <input type="hidden" name="form_type" value="filter_by_genre">
+    <label for="genre">Films by genre: </label>
     <select name="genre" id="genre">
       {%for genre in genres%}
       <option value="{{genre}}">{{genre}}</option>
       {%endfor%}
     </select>
-    <input class="filter_btn" type="submit" value="submit" />
+    <input class="filter_btn" type="submit" value="filter" />
   </form>
 </div>
 <br />

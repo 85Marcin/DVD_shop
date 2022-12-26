@@ -4,7 +4,7 @@ from models.director import Director
 
 def save(director):
     sql = "INSERT INTO directors(name) VALUES ( %s) RETURNING id "
-    values = [director.name]
+    values = [director.name.title()]
     results = run_sql(sql, values)
     director.id = results[0]['id']
     return director

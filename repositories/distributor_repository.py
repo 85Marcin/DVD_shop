@@ -4,7 +4,7 @@ from models.distributor import Distributor
 
 def save(distributor):
     sql = "INSERT INTO distributors(name) VALUES (%s) RETURNING id"
-    values = [distributor.name]
+    values = [distributor.name.title()]
     results = run_sql(sql, values)
     distributor.id = results[0]['id']
     return distributor

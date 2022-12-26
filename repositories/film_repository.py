@@ -7,7 +7,7 @@ import repositories.distributor_repository as distributor_repository
 
 def save(film):
     sql = "INSERT INTO films(title, genre, director_id, distributor_id, stock_quantity, buying_price, selling_price, profit) VALUES (%s, %s, %s, %s, %s, %s, %s, %s) RETURNING id"
-    values = [film.title, film.genre, film.director.id, film.distributor.id, film.stock_quantity, film.buying_price, film.selling_price, film.profit]
+    values = [film.title, film.genre.lower(), film.director.id, film.distributor.id, film.stock_quantity, film.buying_price, film.selling_price, film.profit]
     results = run_sql(sql, values)
     film.id = results[0]['id']
     return film
@@ -48,9 +48,9 @@ def delete(id):
     run_sql(sql, values)
 
 def update(film):
-    sql = "UPDATE films SET (title, genre, director_id, distributor_id, stock_quantity, buying_price, selling_price) = (%s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE films SET ( stock_quantity, buying_price, selling_price) = (%s, %s, %s) WHERE id = %s"
 
-    values = [film.title, film.genre, film.director.id, film.distributor.id, film.stock_quantity, film.buying_price, film.selling_price, film.id]
+    values = [ film.stock_quantity, film.buying_price, film.selling_price, film.id]
     run_sql(sql, values)
 
 def filter_by_director(id):
