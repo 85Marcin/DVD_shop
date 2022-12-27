@@ -141,3 +141,22 @@ menu {
   color: white;
   cursor: pointer;
 }
+
+#out_of_stock {
+  font-size: medium;
+  background-color: #7ed5ea;
+  width: fit-content;
+  padding: 5px;
+  padding-right: 7px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 10px;
+}
+li {
+  margin-top: 2px;
+  line-height: 3px;
+}

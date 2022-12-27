@@ -4,6 +4,8 @@ from controllers.film_controller import films_blueprint
 from controllers.distributor_controller import distributors_blueprint
 from controllers.director_controller import directors_blueprint
 
+import repositories.film_repository as film_repository
+
 app = Flask(__name__)
 
 
@@ -14,7 +16,8 @@ app.register_blueprint(directors_blueprint)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    films = film_repository.select_all()
+    return render_template('index.html', films=films)
 
 
 

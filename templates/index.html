@@ -1,8 +1,14 @@
-{% extends 'base.html' %} {%block contend%}
+{% extends 'base.html' %} {%block content%}
 <menu>
   <a href="/film">Add film</a>
   <a href="/distributors">Add distributor</a>
   <a href="/directors">Add director</a>
 </menu>
 
-{%endblock%}
+{%for film in films%} {%if film.stock_quantity==0%}
+<div id="out_of_stock">
+  <ul>
+    <li>{{film.title|upper}} is out of stock</li>
+  </ul>
+</div>
+{%endif%} {%endfor%} {%endblock%}
