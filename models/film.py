@@ -10,5 +10,4 @@ class Film:
         self.profit = int(selling_price) - int(buying_price)
         self.id = id
 
-    # def update_profit(self):
-    #     self.profit = int(self.selling_price) - int(self.buying_price)
+   

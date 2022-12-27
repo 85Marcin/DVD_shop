@@ -9,10 +9,16 @@
 <table class="add_table">
   <tr>
     <th>DIRECTORS</th>
+    <th></th>
     {%for director in directors%}
   </tr>
   <tr>
     <td>{{director.name}}</td>
+    <td style="width: 10%">
+      <form action="/directors/{{ director.id }}/delete" method="post">
+        <input class="stock_btn" type="submit" value="delete" />
+      </form>
+    </td>
     {%endfor%}
   </tr>
 </table>

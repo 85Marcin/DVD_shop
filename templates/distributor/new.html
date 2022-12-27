@@ -10,10 +10,16 @@
 <table class="add_table">
   <tr>
     <th>DISTRIBUTORS</th>
+    <th></th>
     {%for distributor in distributors%}
   </tr>
   <tr>
     <td>{{distributor.name}}</td>
+    <td style="width: 10%">
+      <form action="/distributors/{{ distributor.id }}/delete" method="post">
+        <input class="stock_btn" type="submit" value="delete" />
+      </form>
+    </td>
     {%endfor%}
   </tr>
 </table>

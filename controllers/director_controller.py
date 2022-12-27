@@ -19,6 +19,11 @@ def add_director():
     director_repository.save(director)
     return redirect("/directors")
 
+@directors_blueprint.route("/directors/<id>/delete", methods=['POST'])
+def delete(id):
+    director_repository.delete(id)
+    return redirect('/directors')
+
 
 
 

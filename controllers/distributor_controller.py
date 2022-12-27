@@ -20,6 +20,11 @@ def add_distributor():
     distributor_repository.save(distributor)
     return redirect("/distributors")
 
+@distributors_blueprint.route("/distributors/<id>/delete", methods=['POST'])
+def delete(id):
+    distributor_repository.delete(id)
+    return redirect("/distributors")
+
 
 
 

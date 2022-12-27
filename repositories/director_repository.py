@@ -13,6 +13,11 @@ def delete_all():
     sql = "DELETE FROM directors"
     run_sql(sql)
 
+def delete(id):
+    sql = "DELETE FROM directors where id = %s"
+    values = [id]
+    run_sql(sql, values)
+
 def select_all():
     directors = []
     sql = "SELECT * FROM directors"

@@ -13,6 +13,11 @@ def delete_all():
     sql = "DELETE FROM distributors"
     run_sql(sql)
 
+def delete(id):
+    sql = "DELETE FROM distributors WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
 def select(id):
     distributor = None
     sql = "SELECT * FROM distributors WHERE id = %s"
