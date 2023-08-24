@@ -5,4 +5,4 @@ Additionally, the app tracks low stock levels and alerts the owner when inventor
 It can also calculate profit per item, allowing the owner to make in﻿formed decisions about inventory management.
 
 
-# To run the app 'flask run' , in the terminal
+# To start the app run 'flask run' in the terminal
